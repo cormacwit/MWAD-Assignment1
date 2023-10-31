@@ -12,4 +12,6 @@ val teachers = TeacherMemStore()
 val teacherView = TeacherView()
 
 fun main(args: Array<String>) {
-    val controller = TeacherController()}
+    val controller = TeacherController()
+    controller.start()
+}

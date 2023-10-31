@@ -51,7 +51,7 @@ class TeacherController {
 
     fun update() {
 
-        teacherView.listTeachers(teachers)
+       list()
         var searchId = teacherView.getId()
         val aTeacher = search(searchId)
 
@@ -69,6 +69,7 @@ class TeacherController {
     }
 
     fun search() {
+        list()
         val aTeacher = search(teacherView.getId())!!
         teacherView.showTeacher(aTeacher)
     }
