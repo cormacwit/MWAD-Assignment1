@@ -10,10 +10,10 @@ import java.util.*
 
 private val logger = KotlinLogging.logger {}
 
-class TeacherJSONStore : TeacherJSONStore {
+class TeacherJSONStore{
 
-    val JSON_FILE = "teachers.json"
-    val gsonBuilder: Gson = GsonBuilder().setPrettyPrinting().create()
+    val JSON_FILE = ".json"
+    val gsonBuilder = GsonBuilder().setPrettyPrinting().create()
     val listType = object : TypeToken<java.util.ArrayList<TeacherModel>>() {}.type
 
     var teachers = mutableListOf<TeacherModel>()
@@ -26,22 +26,22 @@ class TeacherJSONStore : TeacherJSONStore {
     fun generateRandomId(): Long {
         return Random().nextLong()
     }
-    override fun findAll(): MutableList<TeacherModel> {
+     fun findAll(): MutableList<TeacherModel> {
         return teachers
     }
 
-    override fun findOne(id: Long) : TeacherModel? {
+     fun findOne(id: Long) : TeacherModel? {
         var foundTeacher: TeacherModel? = teachers.find { p -> p.id == id }
         return foundTeacher
     }
 
-    override fun create(teacher: TeacherModel) {
+     fun create(teacher: TeacherModel) {
         teacher.id = generateRandomId()
         teachers.add(teacher)
         serialize()
     }
 
-    override fun update(teacher: TeacherModel) {
+     fun update(teacher: TeacherModel) {
         var foundTeacher = findOne(teacher.id!!)
         if (foundTeacher != null) {
             foundTeacher.name = teacher.name

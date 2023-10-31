@@ -18,7 +18,7 @@ fun generateRandomId(): Long {
     return Random().nextLong()
 }
 
-class TeacherStore : TeacherStore {
+class TeacherStore {
 
     var teachers = mutableListOf<TeacherModel>()
 
@@ -28,22 +28,22 @@ class TeacherStore : TeacherStore {
         }
     }
 
-    override fun findAll(): MutableList<TeacherModel> {
+     fun findAll(): MutableList<TeacherModel> {
         return teachers
     }
 
-    override fun findOne(id: Long) : TeacherModel? {
+     fun findOne(id: Long) : TeacherModel? {
         var foundTeacher: TeacherModel? = teachers.find { p -> p.id == id }
         return foundTeacher
     }
 
-    override fun create(teacher: TeacherModel) {
+     fun create(teacher: TeacherModel) {
         teacher.id = generateRandomId()
         teachers.add(teacher)
         serialize()
     }
 
-    override fun update(teacher: TeacherModel) {
+     fun update(teacher: TeacherModel) {
         var foundTeacher = findOne(teacher.id!!)
         if (foundTeacher != null) {
             foundTeacher.name = teacher.name

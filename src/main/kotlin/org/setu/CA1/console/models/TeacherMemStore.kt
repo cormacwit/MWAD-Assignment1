@@ -8,30 +8,30 @@ private fun getId(): Long {
     return lastId++
 }
 
-class TeacherMemStore : TeacherMemStore {
+class TeacherMemStore{
 
     val teachers = ArrayList<TeacherModel>()
 
-    override fun findAll(): List<TeacherModel> {
+     fun findAll(): List<TeacherModel> {
         return teachers
     }
 
-    override fun findOne(id: Long) : TeacherModel? {
+     fun findOne(id: Long) : TeacherModel? {
         var foundTeacher: TeacherModel? = teachers.find { p -> p.id == id }
         return foundTeacher
     }
 
-    override fun create(teacher: TeacherModel) {
+     fun create(teacher: TeacherModel) {
         teacher.id = getId()
         teachers.add(teacher)
         logAll()
     }
 
-    override fun update(teacher: TeacherModel) {
+     fun update(teacher: TeacherModel) {
         var foundTeacher = findOne(teacher.id!!)
         if (foundTeacher != null) {
-            foundTeacher.title = teacher.title
-            foundTeacher.description = teacher.description
+            foundTeacher.name = teacher.name
+            foundTeacher.position = teacher.position
         }
     }
 

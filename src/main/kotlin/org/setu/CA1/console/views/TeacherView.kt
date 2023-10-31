@@ -1,5 +1,5 @@
 package org.setu.CA1.console.views
-
+import org.setu.CA1.console.models.TeacherJSONStore
 import org.setu.CA1.console.models.TeacherModel
 
 class TeacherView {
@@ -25,7 +25,7 @@ class TeacherView {
         return option
     }
 
-    fun listTeachers(teachers: TeacherMemStore) {
+    fun listTeachers(teachers: TeacherJSONStore) {
         println("List All Staff")
         println()
         teachers.logAll()
@@ -43,11 +43,11 @@ class TeacherView {
 
         println()
         print("Enter a Title : ")
-        teacher.title = readln()!!
+        teacher.name = readln()!!
         print("Enter a Description : ")
-        teacher.description = readln()!!
+        teacher.position = readln()!!
 
-        return teacher.title.isNotEmpty() && teacher.description.isNotEmpty()
+        return teacher.name.isNotEmpty() && teacher.position.isNotEmpty()
     }
 
     fun updateTeacherData(teacher : TeacherModel) : Boolean {
@@ -56,14 +56,14 @@ class TeacherView {
         var tempDescription: String?
 
         if (teacher != null) {
-            print("Enter a new Title for [ " + teacher.title + " ] : ")
+            print("Enter a new name for [ " + teacher.name + " ] : ")
             tempTitle = readln()!!
-            print("Enter a new Description for [ " + teacher.description + " ] : ")
+            print("Enter a new position for [ " + teacher.position + " ] : ")
             tempDescription = readln()!!
 
             if (!tempTitle.isNullOrEmpty() && !tempDescription.isNullOrEmpty()) {
-                teacher.title = tempTitle
-                teacher.description = tempDescription
+                teacher.name = tempTitle
+                teacher.position = tempDescription
                 return true
             }
         }
