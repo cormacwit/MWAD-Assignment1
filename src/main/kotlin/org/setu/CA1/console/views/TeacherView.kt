@@ -14,6 +14,7 @@ class TeacherView {
         println(" 2. Update Staff")
         println(" 3. List All Staff")
         println(" 4. Search Staff")
+        println(" 5. delete Staff")
         println("-1. Exit")
         println()
         print("Enter Option : ")
@@ -42,9 +43,9 @@ class TeacherView {
     fun addTeacherData(teacher : TeacherModel) : Boolean {
 
         println()
-        print("Enter a Title : ")
+        print("Enter Staff full name : ")
         teacher.name = readln()!!
-        print("Enter a Description : ")
+        print("Enter Staff position : ")
         teacher.position = readln()!!
 
         return teacher.name.isNotEmpty() && teacher.position.isNotEmpty()

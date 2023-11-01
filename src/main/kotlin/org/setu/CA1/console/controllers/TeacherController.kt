@@ -25,7 +25,7 @@ class TeacherController {
                 2 -> update()
                 3 -> list()
                 4 -> search()
-                -99 -> dummyData()
+                5 -> delete()
                 -1 -> println("Exiting App")
                 else -> println("Invalid Option")
             }
@@ -80,9 +80,20 @@ class TeacherController {
         return foundTeacher
     }
 
-    fun dummyData() {
-        teachers.create(TeacherModel(name = "New York New York", position = "So Good They Named It Twice"))
-        teachers.create(TeacherModel(name= "Ring of Kerry", position = "Some place in the Kingdom"))
-        teachers.create(TeacherModel(name = "Waterford City", position = "You get great Blaas Here!!"))
+
+    fun delete() {
+        teacherView.listTeachers(teachers)
+        var searchId = teacherView.getId()
+        val aTeacher = search(searchId)
+
+        if(aTeacher != null) {
+            teachers.delete(aTeacher)
+            println("Staff Deleted...")
+            teacherView.listTeachers(teachers)
+        }
+        else
+            println("Staff Not Deleted...")
     }
+
+
 }

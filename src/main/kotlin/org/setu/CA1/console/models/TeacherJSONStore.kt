@@ -63,4 +63,9 @@ class TeacherJSONStore{
         val jsonString = read(JSON_FILE)
         teachers = Gson().fromJson(jsonString, listType)
     }
+
+ fun delete(teacher: TeacherModel) {
+        teachers.remove(teacher)
+        serialize()
+    }
 }

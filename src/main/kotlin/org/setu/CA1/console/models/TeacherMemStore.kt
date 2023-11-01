@@ -38,4 +38,8 @@ class TeacherMemStore{
     internal fun logAll() {
         teachers.forEach { logger.info("${it}") }
     }
+
+fun delete(teacher: TeacherModel) {
+        teachers.remove(teacher)
+    }
 }
